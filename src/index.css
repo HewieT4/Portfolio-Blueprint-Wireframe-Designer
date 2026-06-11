@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-serif: "Playfair Display", "Georgia", ui-serif, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --color-accent-gold: #C0A080;
+  --color-dark-bg: #050505;
+  --color-dark-surface: #0a0a0a;
+  --color-dark-panel: #141414;
+}
+
+/* Custom wireframe background pattern or helper classes if needed */
+.blueprint-grid {
+  background-image: radial-gradient(rgba(192, 160, 128, 0.15) 1px, transparent 0);
+  background-size: 20px 20px;
+}
+
+.blueprint-grid-dark {
+  background-image: radial-gradient(rgba(192, 160, 128, 0.08) 1px, transparent 0);
+  background-size: 20px 20px;
+}
+
+.border-subtle {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.glass-card {
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
