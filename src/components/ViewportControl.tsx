@@ -1,13 +1,14 @@
 import React from 'react';
-import { Monitor, Tablet, Smartphone, Code, FileText, Sparkles } from 'lucide-react';
-import { ViewMode, ViewportSize } from '../types';
+import { Monitor, Tablet, Smartphone, Code, Sparkles } from 'lucide-react';
+import { ViewMode, ViewportSize, SectionId } from '../types';
 
 interface ViewportControlProps {
   viewMode: ViewMode;
   setViewMode: (mode: ViewMode) => void;
   viewportSize: ViewportSize;
   setViewportSize: (size: ViewportSize) => void;
-  selectedSectionName: string;
+  selectedSectionId: SectionId;
+  setSelectedSectionId: (id: SectionId) => void;
 }
 
 export default function ViewportControl({
@@ -15,7 +16,8 @@ export default function ViewportControl({
   setViewMode,
   viewportSize,
   setViewportSize,
-  selectedSectionName,
+  selectedSectionId,
+  setSelectedSectionId,
 }: ViewportControlProps) {
   const sizes = [
     { id: 'desktop' as ViewportSize, name: 'Desktop (1440px)', icon: <Monitor size={16} /> },
@@ -33,10 +35,10 @@ export default function ViewportControl({
             <button
               key={sz.id}
               onClick={() => setViewportSize(sz.id)}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-mono transition-all ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-mono transition-all cursor-pointer ${
                 viewportSize === sz.id
                   ? 'bg-zinc-900 text-accent-gold font-medium border border-zinc-800'
-                  : 'text-zinc-500 hover:text-white hover:bg-zinc-90 w-full hover:bg-zinc-900/40'
+                  : 'text-zinc-500 hover:text-white hover:bg-[#0a0a0a] w-full'
               }`}
               title={sz.name}
             >
@@ -48,12 +50,12 @@ export default function ViewportControl({
       </div>
 
       {/* Selector Mode */}
-      <div className="flex items-center gap-2 self-end md:self-auto">
+      <div className="flex items-center gap-2 self-start md:self-auto">
         <label className="text-xs font-mono uppercase text-zinc-500 mr-2">Render Mode:</label>
         <div className="flex bg-[#050505] p-1 rounded-lg border border-zinc-900">
           <button
             onClick={() => setViewMode('wireframe')}
-            className={`flex items-center gap-1.5 px-4 py-1.5 rounded-md text-xs font-mono transition-all ${
+            className={`flex items-center gap-1.5 px-4 py-1.5 rounded-md text-xs font-mono transition-all cursor-pointer ${
               viewMode === 'wireframe'
                 ? 'bg-accent-gold/10 text-accent-gold border border-accent-gold/20 font-medium'
                 : 'text-zinc-500 hover:text-white'
@@ -64,7 +66,7 @@ export default function ViewportControl({
           </button>
           <button
             onClick={() => setViewMode('mockup')}
-            className={`flex items-center gap-1.5 px-4 py-1.5 rounded-md text-xs font-mono transition-all ${
+            className={`flex items-center gap-1.5 px-4 py-1.5 rounded-md text-xs font-mono transition-all cursor-pointer ${
               viewMode === 'mockup'
                 ? 'bg-accent-gold/10 text-accent-gold border border-accent-gold/25 font-medium'
                 : 'text-zinc-500 hover:text-white'
@@ -76,12 +78,29 @@ export default function ViewportControl({
         </div>
       </div>
 
-      {/* Focus Status Indicator */}
-      <div className="hidden lg:flex items-center gap-2 text-xs font-mono">
-        <span className="text-zinc-500">INSPECTING:</span>
-        <span className="px-2 py-0.5 rounded bg-[#050505] border border-zinc-900 text-accent-gold text-[11px] uppercase tracking-wide">
-          {selectedSectionName}
-        </span>
+      {/* Focus Status Indicator - Interactive selector for mobile and desktop */}
+      <div className="flex items-center justify-between md:justify-start gap-2.5 text-xs font-mono border-t md:border-t-0 border-zinc-90 w-full md:w-auto border-zinc-900/50 pt-2.5 md:pt-0">
+        <span className="text-zinc-500 uppercase">Inspecting:</span>
+        <div className="relative inline-block w-48 sm:w-56 text-left">
+          <select
+            value={selectedSectionId}
+            onChange={(e) => setSelectedSectionId(e.target.value as SectionId)}
+            className="w-full appearance-none bg-[#050505] border border-zinc-800 hover:border-accent-gold/50 text-accent-gold font-medium text-[11px] uppercase tracking-wider py-1.5 pl-3.5 pr-8 rounded-lg focus:outline-none transition-all cursor-pointer shadow-sm"
+          >
+            <option value="header">Navigation Header</option>
+            <option value="hero">Hero Banner</option>
+            <option value="about">About Bento Profile</option>
+            <option value="skills">Skills Inventory Deck</option>
+            <option value="projects">Selected Projects Showcase</option>
+            <option value="experience">Historical Experience</option>
+            <option value="contact">Contact Dispatch Node</option>
+          </select>
+          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-accent-gold/70">
+            <svg className="fill-current h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+              <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+            </svg>
+          </div>
+        </div>
       </div>
     </div>
   );

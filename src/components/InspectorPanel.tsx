@@ -19,10 +19,10 @@ export default function InspectorPanel({ section }: InspectorPanelProps) {
   };
 
   const tabs = [
-    { id: 'overview' as const, name: 'Overview', icon: <Info size={14} /> },
-    { id: 'functionality' as const, name: 'Functionality Map', icon: <Activity size={14} /> },
-    { id: 'code' as const, name: 'Code Blueprint', icon: <Code size={14} /> },
-    { id: 'tokens' as const, name: 'Design Tokens', icon: <Settings size={14} /> },
+    { id: 'overview' as const, name: 'Overview', mobName: 'Overview', icon: <Info size={13} /> },
+    { id: 'functionality' as const, name: 'Functionality Map', mobName: 'Specs', icon: <Activity size={13} /> },
+    { id: 'code' as const, name: 'Code Blueprint', mobName: 'Code', icon: <Code size={13} /> },
+    { id: 'tokens' as const, name: 'Design Tokens', mobName: 'Tokens', icon: <Settings size={13} /> },
   ];
 
   return (
@@ -35,20 +35,21 @@ export default function InspectorPanel({ section }: InspectorPanelProps) {
         <p className="text-zinc-500 font-sans text-xs mt-1 leading-relaxed">{section.concept}</p>
       </div>
 
-      {/* Tabs list */}
-      <div className="flex overflow-x-auto bg-[#050505]/50 border-b border-zinc-900 p-1 gap-1">
+      {/* Tabs list (Optimized responsive grid, no scroll bar) */}
+      <div className="grid grid-cols-4 sm:flex sm:overflow-x-auto bg-[#050505]/50 border-b border-zinc-900 p-1 gap-0.5 sm:gap-1">
         {tabs.map((tb) => (
           <button
             key={tb.id}
             onClick={() => setActiveTab(tb.id)}
-            className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-mono transition-all uppercase whitespace-nowrap cursor-pointer ${
+            className={`flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-1.5 px-1 py-2 sm:px-3 sm:py-2 rounded-lg text-[9px] sm:text-xs font-mono transition-all uppercase cursor-pointer w-full text-center ${
               activeTab === tb.id
-                ? 'bg-zinc-90 w-full bg-zinc-900 hover:text-white border border-zinc-800 text-white font-medium'
-                : 'text-zinc-500 hover:text-white'
+                ? 'bg-zinc-900 text-white border border-zinc-805 border-zinc-800 font-medium'
+                : 'text-zinc-550 border border-transparent hover:text-white hover:bg-zinc-900/20'
             }`}
           >
             {tb.icon}
-            <span>{tb.name}</span>
+            <span className="hidden sm:inline leading-none">{tb.name}</span>
+            <span className="sm:hidden leading-none">{tb.mobName}</span>
           </button>
         ))}
       </div>

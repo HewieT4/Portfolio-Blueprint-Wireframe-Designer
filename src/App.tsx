@@ -18,14 +18,20 @@ export default function App() {
   const [viewMode, setViewMode] = useState<ViewMode>('wireframe');
   const [viewportSize, setViewportSize] = useState<ViewportSize>('desktop');
   const [selectedSectionId, setSelectedSectionId] = useState<SectionId>('hero');
+  const [mobileSubTab, setMobileSubTab] = useState<'preview' | 'inspector'>('preview');
+
+  const handleSelectSection = (id: SectionId) => {
+    setSelectedSectionId(id);
+    setMobileSubTab('inspector');
+  };
 
   // Find currently inspected layout section
   const currentSection = portfolioSections.find(s => s.id === selectedSectionId) || portfolioSections[0];
 
   const exploreTabs = [
-    { id: 'inspector' as const, name: 'Wireframes Showcase', icon: <SlidersHorizontal size={15} /> },
-    { id: 'architecture' as const, name: 'System Architecture', icon: <Layers size={15} /> },
-    { id: 'tokens' as const, name: 'Design System Tokens', icon: <Settings size={15} /> },
+    { id: 'inspector' as const, name: 'Wireframes Showcase', mobileName: 'Wireframe', icon: <SlidersHorizontal size={14} /> },
+    { id: 'architecture' as const, name: 'System Architecture', mobileName: 'System', icon: <Layers size={14} /> },
+    { id: 'tokens' as const, name: 'Design System Tokens', mobileName: 'Tokens', icon: <Settings size={14} /> },
   ];
 
   return (
@@ -68,20 +74,21 @@ export default function App() {
             </p>
           </div>
 
-          {/* Core Explorer mode Tabs */}
-          <div className="flex bg-zinc-950 p-1 rounded-lg border border-zinc-900 overflow-x-auto max-w-full gap-1">
+          {/* Core Explorer mode Tabs (Optimized responsive grid, no scroll bar) */}
+          <div className="grid grid-cols-3 bg-zinc-950 p-1 rounded-lg border border-zinc-900 w-full md:w-auto gap-1">
             {exploreTabs.map((tb) => (
               <button
                 key={tb.id}
                 onClick={() => setActiveTab(tb.id)}
-                className={`flex items-center gap-2 px-3.5 py-2 rounded-md text-xs font-mono transition-all uppercase whitespace-nowrap cursor-pointer ${
+                className={`flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 px-2 py-2 sm:px-3.5 sm:py-2 rounded-md text-[10px] sm:text-xs font-mono transition-all uppercase cursor-pointer ${
                   activeTab === tb.id
-                    ? 'bg-zinc-900 text-white border border-zinc-800 font-medium shadow'
+                    ? 'bg-zinc-900 text-white border border-zinc-805 border-zinc-800 font-medium shadow'
                     : 'text-zinc-500 hover:text-white hover:bg-zinc-90 w-full hover:bg-zinc-900/40'
                 }`}
               >
                 {tb.icon}
-                <span>{tb.name}</span>
+                <span className="hidden sm:inline leading-none">{tb.name}</span>
+                <span className="sm:hidden leading-none text-[9px]">{tb.mobileName}</span>
               </button>
             ))}
           </div>
@@ -97,14 +104,43 @@ export default function App() {
               setViewMode={setViewMode}
               viewportSize={viewportSize}
               setViewportSize={setViewportSize}
-              selectedSectionName={currentSection.name}
+              selectedSectionId={selectedSectionId}
+              setSelectedSectionId={handleSelectSection}
             />
+
+            {/* Mobile/Tablet view toggle for narrow screens (below 1024px) */}
+            <div className="flex lg:hidden bg-zinc-950 p-1.5 rounded-xl border border-zinc-900 gap-2 w-full shadow-lg">
+              <button
+                onClick={() => setMobileSubTab('preview')}
+                className={`flex-1 py-2 sm:py-2.5 rounded-lg text-2xs sm:text-xs font-mono transition-all uppercase cursor-pointer text-center flex items-center justify-center gap-1.5 ${
+                  mobileSubTab === 'preview'
+                    ? 'bg-zinc-900 border border-zinc-800 text-accent-gold font-semibold shadow-inner'
+                    : 'text-zinc-500 hover:text-white'
+                }`}
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-accent-gold"></span>
+                <span>1. Showcase Preview</span>
+              </button>
+              <button
+                onClick={() => setMobileSubTab('inspector')}
+                className={`flex-1 py-2 sm:py-2.5 rounded-lg text-2xs sm:text-xs font-mono transition-all uppercase cursor-pointer text-center flex items-center justify-center gap-1.5 ${
+                  mobileSubTab === 'inspector'
+                    ? 'bg-zinc-900 border border-zinc-800 text-accent-gold font-semibold shadow-inner'
+                    : 'text-zinc-500 hover:text-white'
+                }`}
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-accent-gold animate-pulse"></span>
+                <span>2. Spec Inspector</span>
+              </button>
+            </div>
 
             {/* Main Interactive Split panel grid */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
               
               {/* Left Column - Scrollable Stage showing either wireframe outline or mock site */}
-              <div className="lg:col-span-7 space-y-4">
+              <div className={`lg:col-span-7 space-y-4 ${
+                mobileSubTab === 'preview' ? 'block' : 'max-lg:hidden'
+              }`}>
                 <div className="flex justify-between items-center px-2 text-[10px] font-mono">
                   <span className="text-zinc-500 flex items-center gap-1">
                     <Compass size={12} className="text-accent-gold" />
@@ -118,13 +154,15 @@ export default function App() {
                     viewMode={viewMode}
                     viewportSize={viewportSize}
                     selectedSectionId={selectedSectionId}
-                    setSelectedSectionId={setSelectedSectionId}
+                    setSelectedSectionId={handleSelectSection}
                   />
                 </div>
               </div>
 
               {/* Right Column - Spec blueprint Inspector details */}
-              <div className="lg:col-span-5 h-full self-stretch md:sticky md:top-6">
+              <div className={`lg:col-span-5 h-full self-stretch md:sticky md:top-6 ${
+                mobileSubTab === 'inspector' ? 'block' : 'max-lg:hidden'
+              }`}>
                 <InspectorPanel section={currentSection} />
               </div>
 
