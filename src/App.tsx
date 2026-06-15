@@ -46,19 +46,6 @@ export default function App() {
         {/* Top Header Section */}
         <header className="flex flex-col md:flex-row justify-between items-start md:items-center p-8 bg-[#0a0a0a] border border-zinc-900 rounded-xl gap-6">
           <div className="flex flex-col sm:flex-row items-start gap-5">
-            {/* Elegant glowing logo container */}
-            <div className="relative group shrink-0">
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-accent-gold/40 to-amber-500/20 rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
-              <div className="relative w-16 h-16 sm:w-20 sm:h-20 bg-zinc-950 border border-zinc-800 rounded-xl overflow-hidden flex items-center justify-center">
-                <img 
-                  src="/src/assets/images/hews_logo_1781527609330.jpg" 
-                  alt="Hews Port Designer Logo" 
-                  className="w-full h-full object-cover" 
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-            </div>
-
             <div className="space-y-2">
               <div className="flex items-center gap-2">
                 <span className="p-1 px-2 bg-accent-gold/10 border border-accent-gold/20 text-accent-gold rounded text-[9px] font-mono uppercase tracking-wider">
