@@ -1,6 +1,6 @@
 {
-  "name": "Portfolio Blueprint & Wireframe Designer",
-  "description": "An interactive wireframe viewer, user experience map, and component blueprint analyzer for Matthews Thekiso's Developer Portfolio site.",
+  "name": "Hews Port Designer",
+  "description": "An interactive architectural showcase, layout blueprint builder, and component wireframe designer for professional web portfolios.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

@@ -45,33 +45,39 @@ export default function App() {
         
         {/* Top Header Section */}
         <header className="flex flex-col md:flex-row justify-between items-start md:items-center p-8 bg-[#0a0a0a] border border-zinc-900 rounded-xl gap-6">
-          <div className="space-y-2.5">
-            <div className="flex items-center gap-2">
-              <span className="p-1.5 bg-accent-gold/10 border border-accent-gold/20 text-accent-gold rounded-lg text-xs leading-none">
-                <Terminal size={14} />
-              </span>
-              <span className="text-[10px] font-mono text-accent-gold uppercase tracking-[0.2em] font-semibold">Interactive UX Showcase Node</span>
+          <div className="flex flex-col sm:flex-row items-start gap-5">
+            {/* Elegant glowing logo container */}
+            <div className="relative group shrink-0">
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-accent-gold/40 to-amber-500/20 rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
+              <div className="relative w-16 h-16 sm:w-20 sm:h-20 bg-zinc-950 border border-zinc-800 rounded-xl overflow-hidden flex items-center justify-center">
+                <img 
+                  src="/src/assets/images/hews_logo_1781527609330.jpg" 
+                  alt="Hews Port Designer Logo" 
+                  className="w-full h-full object-cover" 
+                  referrerPolicy="no-referrer"
+                />
+              </div>
             </div>
-            <div className="space-y-1">
-              <h1 className="font-serif font-semibold text-4xl sm:text-5xl md:text-6xl text-white tracking-tight leading-none">
-                Matthews <span className="text-accent-gold italic font-medium">Thekiso</span>
-              </h1>
-              <p className="font-serif text-zinc-450 text-sm sm:text-base italic font-light">
-                Portfolio Blueprint & Wireframe Explorer
+
+            <div className="space-y-2">
+              <div className="flex items-center gap-2">
+                <span className="p-1 px-2 bg-accent-gold/10 border border-accent-gold/20 text-accent-gold rounded text-[9px] font-mono uppercase tracking-wider">
+                  ACTIVE_NODE // VER_2.1
+                </span>
+                <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider font-semibold">Interactive UX Showcase</span>
+              </div>
+              <div className="space-y-1">
+                <h1 className="font-serif font-semibold text-3xl sm:text-4xl md:text-5xl text-white tracking-tight leading-none">
+                  Hews <span className="text-accent-gold italic font-medium">Port Designer</span>
+                </h1>
+                <p className="font-mono text-xs text-zinc-450 tracking-wide">
+                  Architectural Portfolio Blueprint & Schematic Viewer
+                </p>
+              </div>
+              <p className="text-zinc-500 text-[11px]">
+                Deconstructing dynamic layouts, blueprints, design tokens, and compiled specifications for Matthews Thekiso.
               </p>
             </div>
-            <p className="text-zinc-500 text-xs sm:text-xs">
-              Deconstructing layouts, interactive flows, designs, and code-blueprints for: {' '}
-              <a 
-                href="https://matthews-thekiso-portfolio.vercel.app/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-accent-gold hover:text-amber-200 underline font-mono inline-flex items-center gap-0.5 ml-1 select-all"
-              >
-                matthews-thekiso-portfolio.vercel.app
-                <ArrowUpRight size={10} />
-              </a>
-            </p>
           </div>
 
           {/* Core Explorer mode Tabs (Optimized responsive grid, no scroll bar) */}

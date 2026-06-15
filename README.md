@@ -1,107 +1,97 @@
-# Interactive Blueprint & Wireframe Portfolio Designer
+# Portfolio Blueprint & Wireframe Designer
 
-An interactive developer portfolio that reimagines the traditional "project cards and text" layout as a CAD software interface or architectural blueprint. Built to immediately demonstrate dual expertise in pixel-perfect frontend design and sound full-stack engineering logic.
+An interactive engineering schematic viewer, design token explorer, and dynamic layout inspector crafted as a custom, high-fidelity developer showcase for **Matthews Thekiso**. 
 
----
-
-## Table of Contents
-
-- [Concept & Aesthetic](#concept--aesthetic)
-- [Core Features](#core-features)
-  - [1. Interactive Layout Controls](#1-interactive-layout-controls-viewport--theme-toggling)
-  - [2. Mobile-Responsive Sub-Tab System](#2-mobile-responsive-sub-tab-system)
-  - [3. Dynamic Skills Inventory & Filtering Deck](#3-dynamic-skills-inventory--filtering-deck)
-  - [4. Animated Chronology Axis (Work Experience)](#4-animated-chronology-axis-work-experience)
-  - [5. Payload-Driven Contact Gateway](#5-payload-driven-contact-gateway)
-  - [6. Interactive System Architecture & Design Tokens Explorer](#6-interactive-system-architecture--design-tokens-explorer)
-- [Design Tokens](#design-tokens)
-- [Contact](#contact)
+This system breaks down standard portfolio presentation by staging elements inside a virtual blueprint canvas, complete with CAD guidelines, alignment nodes, live component parameters, and architectural flow diagrams.
 
 ---
 
-## Concept & Aesthetic
+## 🎨 Creative & Architectural Concept
 
-At its core, this site is a **developer's canvas** — a high-contrast workspace theme combining deep carbon grays, pure off-whites, and metallic gold accents.
+Unlike ordinary static resume pages, this portfolio utilizes a **Blueprint & Wireframe Schematic** aesthetic to highlight both structural execution and design-driven engineering. 
 
-| Element | Value |
-|---|---|
-| Background (Carbon) | `#050505` |
-| Text (Off-White) | Pure off-white |
-| Accent (Gold) | `#d0a080` |
-
-### Dual-State Presentation Layer
-
-Visitors can toggle the live portfolio view between two modes:
-
-- **Wireframe / Blueprint Mode** — Displays container classes, CSS parameters, font tracking, relative spacing outlines, and margin telemetry, presenting the site as an annotated technical drawing.
-- **Hi-Fi Mock Mode** — Displays a modern, polished, dark-themed live design interface, showing the finished product.
-
-### Spec Inspector Integration
-
-Every section of the portfolio is fully interactive. Clicking on any section — **Hero, About, Skills, Experience, or Contact Form** — opens a persistent **Blueprint Inspector Panel** alongside it, dynamically revealing:
-
-- Engineering specs
-- Design tokens
-- Responsive breakpoints
-- Design rationale
-- Code snippets for that exact segment
+- **The Blueprint Aesthetic**: Rendered on an eye-safe dark grid using responsive dimensions, custom alignment markers, dynamic coordinates, and elegant, high-contrast gold metallic accents (`#d0a080`).
+- **Dual-State Presentation Layer**: Toggles between a minimalist wireframe container schematic (showing layout outlines, padding guides, and typography specs) and a styled live interface preview.
+- **Spec Inspector System**: Selecting any section on the site instantly maps detailed structural specifications, active code tokens, design parameters, and functional metadata in a dedicated sidebar.
 
 ---
 
-## Core Features
+## 🚀 Key Functional Modules
 
-### 1. Interactive Layout Controls (Viewport & Theme Toggling)
+### 1. Interactive Wireframe Showcase
+- A responsive preview stage mimicking professional design mockups.
+- Allows users to switch views with an interactive **Viewport Sizing Control Indicator** (Desktop vs. Mobile).
+- Lets users inspect structured, interactive sections (Hero, Works, Experience, Direct Dispatch Gateway) on the fly.
 
-- Toggle the preview container between **Desktop, Tablet, and Mobile** presets to see how the site structure flows across viewports.
-- A fully integrated **Blueprint / Hi-Fi switcher** lets visitors swap presentation modes instantly.
-- A simulated **dark-theme toggle** reactively updates the layout's aesthetic indicators.
+### 2. Dual-Mode Responsive Blueprint Inspector
+- Evaluates real-time structural layout components across different scales.
+- On large viewports, utilizes a beautiful **desktop-side panel** structure.
+- On smaller viewports (mobile/tablet sizes), features an elegant **Spec Inspector & Preview Tabs** layout, resolving standard viewport display constraints and rendering blueprints flawlessly over touch devices.
 
-### 2. Mobile-Responsive Sub-Tab System
+### 3. Chronology Node Timeline
+- An interactive, timeline-tracking ledger mapping professional milestones with integrated simulated trace particles.
+- Dynamically calculates simulated parsing percentages as the user evaluates individual experience records.
 
-- **On wide desktop screens:** a side-by-side layout is used — the preview canvas on the left, and the Spec Inspector Panel on the right.
-- **On narrow mobile devices:** side-by-side panels would break standard screen boundaries, so an elegant two-tab system is used instead:
-  1. **Showcase Preview**
-  2. **Spec Inspector**
-
-  Clicking any section dynamically focus-shifts the mobile user to the Spec Inspector tab, letting recruiters inspect code blueprints smoothly even from a smartphone.
-
-### 3. Dynamic Skills Inventory & Filtering Deck
-
-- Categorizes and lists engineering competencies across **Frontend, Backend, and Infrastructure**.
-- Visitors can filter items seamlessly.
-- Hovering over or selecting an item dynamically renders design thresholds and current expertise levels.
-
-### 4. Animated Chronology Axis (Work Experience)
-
-- Displays professional history as a structured data spine.
-- A live **"Timeline Crawler" particle** tracks down the left side of the screen, dynamically calculating simulated parsing indices that indicate how deep the visitor has navigated through the history.
-
-### 5. Payload-Driven Contact Gateway
-
-- A fully functional mock form styled like a **terminal packet router**.
-- Submissions trigger a success-state simulation that visually outlines how a user-submitted contact payload is processed before being routed to the destination email.
-
-### 6. Interactive System Architecture & Design Tokens Explorer
-
-Additional tabs let users step away from the wireframe inspector to explore:
-
-- **Live Architecture Flowchart** — a visual data and file map of the portfolio application itself.
-- **Design System Token Deck** — a reference sheet of color hexes, font declarations, and border dimensions used throughout the site.
+### 4. Custom Architecture Flowchart
+- Dynamic blueprint diagrams detailing the application's underlying code design and modular boundaries, complete with interactive node highlights.
 
 ---
 
-## Design Tokens
+## 📦 Project Setup & Local Run
 
-| Token | Description | Value |
-|---|---|---|
-| `--color-carbon` | Primary background | `#050505` |
-| `--color-offwhite` | Primary text color | Off-white |
-| `--color-gold` | Accent / highlight color | `#d0a080` |
+This application was structured as a lightning-fast React application using **Vite**, **TypeScript**, **Lucide React** for lightweight icons, and **Motion** for performance-optimized transitions.
+
+### Prerequisites
+Make sure you have Node.js (version 18 or above recommended) and npm installed.
+
+1. **Clone & Direct to Directory**:
+   ```bash
+   git clone <your-repository-url>
+   cd <project-directory-name>
+   ```
+
+2. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Incorporate Local Dev Server**:
+   ```bash
+   npm run dev
+   ```
+   *The server will boot locally. Open [http://localhost:3000](http://localhost:3000) or check the command-line output for your custom configuration.*
+
+4. **Compile Production Bundle**:
+   ```bash
+   npm run build
+   ```
+   *Outputs optimized, minified static assets directly to the `/dist` directory.*
 
 ---
 
-## Contact
+## 🌐 Deploying to Vercel via GitHub
 
-Submissions made through the Payload-Driven Contact Gateway are routed to:
+Because this is a modern standard Single Page Application (SPA), deploying it globally to **Vercel** is highly straightforward and fully automated:
 
-📧 **sefellethekiso@gmail.com**
+1. **Push Changes to GitHub**:
+   Ensure all active files and progress are committed and pushed safely to your GitHub repository.
+   ```bash
+   git add .
+   git commit -m "feat: complete responsive blueprint inspector and readme"
+   git push origin main
+   ```
+
+2. **Connect to Vercel**:
+   - Log into your [Vercel Dashboard](https://vercel.com).
+   - Click the **"Add New"** button and select **"Project"**.
+   - Import your GitHub repository containing this project.
+
+3. **Configure Project Settings**:
+   Vercel automatically detects Vite-based projects and configures optimal presets:
+   - **Framework Preset**: select `Vite` (automatically detected).
+   - **Build Command**: `npm run build` (or `vite build`).
+   - **Output Directory**: `dist`.
+   - **Root Directory**: `./` (or select directory if inside a subdirectory).
+
+4. **Deploy**:
+   Click **"Deploy"**. Vercel will build the TypeScript sources and deploy your live Blueprint Portfolio containing optimized, serverless static edge assets in seconds!
